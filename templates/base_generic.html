@@ -26,11 +26,11 @@ $(document).ready(function(){
       <table class="table table-hover">
           <thead>
               <tr>
-                <th style="padding:0;"><a target="_self" href = "{% url 'stuffin' %}" class="btn btn-{% if in_count > 0 %}danger{% else %}success{% endif %} btn-lg btn-block">İçəridə qalanlar
+                <th style="padding:0;"><a target="_self" href = "{% url 'stuffin' %}" class="btn btn-{% if in_count > 0 %}danger{% else %}success{% endif %} btn-lg btn-block">Inside
                 <span class="badge">{{ in_count }}</span></a></th>
-                <th style="padding:0;"><a target="_self" href = "{% url 'stuffunknown' %}" class="btn btn-{% if unknown_count > 0 %}warning{% else %}success{% endif %} btn-lg btn-block">Şübhəli olanlar
+                <th style="padding:0;"><a target="_self" href = "{% url 'stuffunknown' %}" class="btn btn-{% if unknown_count > 0 %}warning{% else %}success{% endif %} btn-lg btn-block">Unknown
                 <span class="badge">{{ unknown_count }}</span></a></th>
-                <th style="padding:0;"><a target="_self" href = "{% url 'stuffall' %}" class="btn btn-success btn-lg btn-block">Toplama məntəqəsi
+                <th style="padding:0;"><a target="_self" href = "{% url 'stuffall' %}" class="btn btn-success btn-lg btn-block">Master Point
                 <span class="badge">{{ rescued_count }}</span></a></th>
               </tr>
           </thead>

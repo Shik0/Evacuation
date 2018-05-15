@@ -1,6 +1,6 @@
 import requests, parsedatetime as pdt
 from bs4 import BeautifulSoup
-import os,shutil
+import os,shutil, sys
 from decouple import config
 
 ######## DECLARE ALL CONSTANT VARIABLES HERE ############
@@ -40,7 +40,6 @@ def convert_date(dt):
     # return format YYYY-MM-DD
     return cal.parseDT(" ".join(dt_EN))[0].strftime('%Y-%m-%d')
 
-
 def get_profile_pic(stuff_pic, conn_param):
     ####### assign user id from URL to the picture name, we find this id from URL using index
     left = stuff_pic.find("=") + 1
@@ -49,7 +48,7 @@ def get_profile_pic(stuff_pic, conn_param):
     # copy profile picture to the project media folder (change this part in the future)
     # this method is only done for the test purposes, do not use this in prod system
     resp = conn_param.get(stuff_pic, stream = True)
-    with open(settings.MEDIA_ROOT + os.sep + 'profilepic'+ os.sep + '%s.jpg' % file_name, 'wb') as ff:
+    with open(settings.MEDIA_ROOT + '%s.jpg' % file_name, 'wb') as ff:
         shutil.copyfileobj(resp.raw, ff)
     del resp
     return "%s.jpg" % file_name
@@ -98,8 +97,12 @@ def companyStuff(_stuff_url,dep_lst,conn_par): #function receive two params : UR
                             stuff["picture"] = get_profile_pic(domain + hit.img['src'], session) #profile picture name
                             stuff["department"] = hit.h1.string #department
                             stuff["position"] = hit.span.string # position
-                        except:
-                            print("Error occured, please check BLOCK 3!")
+                        # do not show full error message in prod system
+                        # in prod system replace except to:
+                        #except:
+                        #    print("Error occured, please check BLOCK 3!")
+                        except Exception as error:
+                            print("Error occured, please check BLOCK 3!" + str(error))
                         #### END OF BLOCK 3 ####
 
                         for i in range(1,len(hit.find("div").find_all("div", class_="profileKey"))):
@@ -123,6 +126,7 @@ if __name__ == "__main__":
     # '2' is a Commercial department ID and some of employees from this dep work in the city office.
     #Employees workplaces need classification!
     plant_deps = [dep for dep in findDepartments(stuff_departments) if dep != '2']
+
     for emp in employees:
         if employees[emp]["name"][-1] == "v":
             gtype = "m"

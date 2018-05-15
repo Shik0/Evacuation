@@ -55,6 +55,8 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
+*.sqlite3
+*.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -102,3 +104,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#ignore profile pictures
+Evacuation/static/hse/images/*.jpg

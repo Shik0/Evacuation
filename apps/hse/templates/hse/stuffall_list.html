@@ -7,7 +7,7 @@
                 <ul>
                   {% for stf in stuffall_list %}
                   <li>
-                    <img src="{{ baseUrl }}images/{{stf.profilepic}}" class="img-circle"   alt="{{ stf.name }}" style="width:30px;height:30px;"/>
+                    <img src="{{ baseUrl }}hse/images/{{stf.profilepic}}" class="img-circle"   alt="{{ stf.name }}" style="width:30px;height:30px;"/>
                     <a href="{% url 'stuff-detail' stf.pk %}">{{ stf.name }}</a>
                   </li>
                   {% endfor %}

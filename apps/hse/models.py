@@ -55,7 +55,7 @@ class StuffAll(models.Model):
         """
         Represent name of the employeers as a Model object
         """
-        return "%s" % (self.empid)
+        return "%s, %s, %s" % (self.name,self.city, self.pk)
 
     def get_absoulte_url(self):
         """

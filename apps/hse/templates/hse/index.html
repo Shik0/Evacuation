@@ -4,7 +4,7 @@
 {% load static %}
 {% static "" as baseUrl %}
 {% for s in stuff %}
-    <label> <img src="{{ baseUrl }}images/{{s.profilepic}}"" alt="My image" style="width:40px;height:40px;"/>
+    <label> <img src="{{ baseUrl }}hse/images/{{s.profilepic}}"" alt="My image" style="width:40px;height:40px;"/>
      {{ s.name }} </label><br>
 {% endfor %}
 {% endblock %}

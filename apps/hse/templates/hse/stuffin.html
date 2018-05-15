@@ -15,7 +15,7 @@
         {% for stf in stuffin %}
                 <tr>
                     <td>
-                        <img src="{{ baseUrl }}images/{{stf.profilepic}}" class="img-circle"   alt="{{ stf.name }}" style="width:25px;height:25px;"/>
+                        <img src="{{ baseUrl }}hse/images/{{stf.profilepic}}" class="img-circle"   alt="{{ stf.name }}" style="width:25px;height:25px;"/>
                         <a href="{% url 'stuff-detail' stf.pk %}"
                         title = "{{ stf.name }}" data-toggle="popover" data-html = "True"
                         data-trigger = "hover"
@@ -24,9 +24,9 @@
                         data-content = "<h5>Departament: <strong class='text-info'>{{stf.department}}</strong></h5><h5>Vəzifə: <strong class='text-info'>{{stf.position}}</strong></h5><h5>E-mail: <strong class='text-info'>{{stf.email}}</strong></h> <h5>Şəhər:<strong class='text-info'> {{stf.city}}</strong></h5><h5>İş yeri:<strong class='text-info'>{{stf.get_workplace_display}}</strong></h5><h5> Bina:<strong class='text-info'>{{stf.building}}</strong></h5><h5>Mərtəbə: <strong class='text-info'>{{stf.floor}}</strong></h5>"
                         >{{ stf.name }}</a>
                     </td>
-                    <td style="padding-top:7px;">{% if stf.email %}{{ stf.email }}{% else %} <span class="text-muted">Yoxdur</span> {% endif %}</td>
-                    <td style="padding-top:7px;">{% if stf.mobile %}{{ stf.mobile }}{% else %}<span class="text-muted">Yoxdur</span> {% endif %}</td>
-                    <td style="padding-top:7px;">{% if stf.phone %}{{ stf.phone }}{% else %}<span class="text-muted">Yoxdur</span> {% endif %}</td>
+                    <td style="padding-top:7px;">{% if stf.email %}{{ stf.email }}{% else %} <span class="text-muted">N/A</span> {% endif %}</td>
+                    <td style="padding-top:7px;">{% if stf.mobile %}{{ stf.mobile }}{% else %}<span class="text-muted">N/A</span> {% endif %}</td>
+                    <td style="padding-top:7px;">{% if stf.phone %}{{ stf.phone }}{% else %}<span class="text-muted">N/A</span> {% endif %}</td>
                 </tr>
                   {% endfor %}
     </tbody>
