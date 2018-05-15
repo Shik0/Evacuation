@@ -1,0 +1,23 @@
+@font-face
+{
+font-family: CustomFont;
+src:    url('Cocomat Light.otf') format("truetype"),
+        url('Cocomat Light.otf') format("opentype"); /* IE */
+}
+.nav-tabs > li.active > a{ background: linear-gradient(darkseagreen, white);}
+
+.nav-tabs > li > a{ background-color: lightgreen;}
+
+h3, p {
+    font-family:CustomFont;
+}
+
+.row {
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 4px;
+}
+
+.popover{
+    max-width:320px;
+}

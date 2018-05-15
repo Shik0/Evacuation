@@ -1,0 +1,56 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+            {% if stuffin %}
+  <table class="table table-condensed table-hover">
+     <thead>
+      <tr>
+        <th>Employee name</th>
+        <th>E-mail</th>
+        <th>Mobile</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for stf in stuffin %}
+                <tr>
+                    <td>
+                        <img src="{{ baseUrl }}images/{{stf.profilepic}}" class="img-circle"   alt="{{ stf.name }}" style="width:25px;height:25px;"/>
+                        <a href="{% url 'stuff-detail' stf.pk %}"
+                        title = "{{ stf.name }}" data-toggle="popover" data-html = "True"
+                        data-trigger = "hover"
+                        container = "body"
+                        placement = "right"
+                        data-content = "<h5>Departament: <strong class='text-info'>{{stf.department}}</strong></h5><h5>Vəzifə: <strong class='text-info'>{{stf.position}}</strong></h5><h5>E-mail: <strong class='text-info'>{{stf.email}}</strong></h> <h5>Şəhər:<strong class='text-info'> {{stf.city}}</strong></h5><h5>İş yeri:<strong class='text-info'>{{stf.get_workplace_display}}</strong></h5><h5> Bina:<strong class='text-info'>{{stf.building}}</strong></h5><h5>Mərtəbə: <strong class='text-info'>{{stf.floor}}</strong></h5>"
+                        >{{ stf.name }}</a>
+                    </td>
+                    <td style="padding-top:7px;">{% if stf.email %}{{ stf.email }}{% else %} <span class="text-muted">Yoxdur</span> {% endif %}</td>
+                    <td style="padding-top:7px;">{% if stf.mobile %}{{ stf.mobile }}{% else %}<span class="text-muted">Yoxdur</span> {% endif %}</td>
+                    <td style="padding-top:7px;">{% if stf.phone %}{{ stf.phone }}{% else %}<span class="text-muted">Yoxdur</span> {% endif %}</td>
+                </tr>
+                  {% endfor %}
+    </tbody>
+  </table>
+            {% else %}
+              <p>There are no stuff inside the office. All stuff rescued!</p>
+            {% endif %}
+
+            {% block pagination%}
+                  {% if is_paginated %}
+                      <div class="pagination">
+                          <span class="page-links">
+                              {% if page_obj.has_previous %}
+                              <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                  {% endif %}
+                          <span class="page-current">
+                              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                          </span>
+                  {% if page_obj.has_next %}
+                      <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                  {% endif %}
+                          </span>
+                       </div>
+                  {% endif %}
+            {% endblock %}
+        	</div>
+{% endblock %}

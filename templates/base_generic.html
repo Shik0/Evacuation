@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Stuff Evacuation application</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'hse/css/styles.css' %}">
+</head>
+<body>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
+<div class="container">
+    {% load static %}
+    {% static "" as baseUrl %}
+      <h3>Stuff Evacuation application</h3>
+      <p>1-ci tab: Zavodda olanların ümumi sayı, 2-ci tab: statusu şübhəli olanlar, 3-cü tab: İçəridə qalanlar .</p>
+      <p><strong> All employees count: {{ all_employee_count }}, theoric employees count: {{ theoric_employee_count }}</strong></p>
+      <table class="table table-hover">
+          <thead>
+              <tr>
+                <th style="padding:0;"><a target="_self" href = "{% url 'stuffin' %}" class="btn btn-{% if in_count > 0 %}danger{% else %}success{% endif %} btn-lg btn-block">İçəridə qalanlar
+                <span class="badge">{{ in_count }}</span></a></th>
+                <th style="padding:0;"><a target="_self" href = "{% url 'stuffunknown' %}" class="btn btn-{% if unknown_count > 0 %}warning{% else %}success{% endif %} btn-lg btn-block">Şübhəli olanlar
+                <span class="badge">{{ unknown_count }}</span></a></th>
+                <th style="padding:0;"><a target="_self" href = "{% url 'stuffall' %}" class="btn btn-success btn-lg btn-block">Toplama məntəqəsi
+                <span class="badge">{{ rescued_count }}</span></a></th>
+              </tr>
+          </thead>
+          </table>
+    {% block content %}
+         {% block pagination %}
+         {% endblock %}
+    {% endblock %}
+
+
+</body>
+</html>

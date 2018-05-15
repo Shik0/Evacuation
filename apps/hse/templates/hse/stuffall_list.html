@@ -1,0 +1,44 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            {% if stuffall_list %}
+                <ul>
+                  {% for stf in stuffall_list %}
+                  <li>
+                    <img src="{{ baseUrl }}images/{{stf.profilepic}}" class="img-circle"   alt="{{ stf.name }}" style="width:30px;height:30px;"/>
+                    <a href="{% url 'stuff-detail' stf.pk %}">{{ stf.name }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+            {% else %}
+              <p>There are no stuff in the database.</p>
+            {% endif %}
+            {% block pagination%}
+                  {% if is_paginated %}
+                      <div class="pagination">
+                          <span class="page-links">
+                              {% if page_obj.has_previous %}
+                              <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                  {% endif %}
+                          <span class="page-current">
+                              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                          </span>
+                  {% if page_obj.has_next %}
+                      <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                  {% endif %}
+                          </span>
+                       </div>
+                  {% endif %}
+            {% endblock %}
+        	</div>
+        	<div id="menu1" class="tab-pane fade">
+        		  <p> No data yet! </p>
+        	</div>
+    <div id="menu2" class="tab-pane fade">
+		  <p> No data yet here </p>
+	</div>
+  </div>
+</div>
+{% endblock %}
