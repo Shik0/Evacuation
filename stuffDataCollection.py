@@ -1,6 +1,6 @@
 import requests, parsedatetime as pdt
 from bs4 import BeautifulSoup
-import os,shutil,sys
+import os,shutil
 from decouple import config
 
 ######## DECLARE ALL CONSTANT VARIABLES HERE ############
@@ -29,8 +29,7 @@ django.setup()
 from apps.hse.models import StuffAll, Country #to store collected data in the database tables
 from Evacuation import settings
 ######## END OF CONSTANTS ###############################
-print(settings.PROJECT_DIR.child('static'))
-sys.exit()
+
 def convert_date(dt):
     months = {"Yanvar":"January","Fevral":"February","Mart":"March","Aprel":"April","May":"May",
             "İyun":"June","İyul":"July","Avqust":"August","Sentyabr":"September","Oktyabr":"October",
