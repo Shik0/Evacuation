@@ -11,6 +11,6 @@ parsedatetime==2.4
 Pillow==5.1.0
 python-decouple==3.1
 pytz==2018.4
-requests==2.18.4
+requests>=2.20.0
 Unipath==1.1
 urllib3==1.22
