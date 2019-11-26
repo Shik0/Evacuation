@@ -14,7 +14,7 @@ Process workflow:
 3. Application makes synchronization with tourniquet database and update all information about stuff arrivals and leaves
 4. When alarm happens stuff make check in the Master Point and set stuff member status in "Master Point"
 
-HSE members can follow all this process online using web interface.
+HSE members can follow all this processes online using web interface.
 
 **Please, check requirements before to use application**
 
