@@ -5,7 +5,7 @@ When alarms happen in any company it is important to rescue all stuff to the sec
 
 But manually checking all stuff is a time consuming process and there are high possibilities that we can miss (or skip unintentionally) someone from the check list.
 
-Using this application company's HSE department can fully automate Master Point checking process and save precious time to find other employees (stuff members) in the alarm zone.
+Using this application company's HSE department can fully automate Master Point checking process and save precious time to find other employees (staff members) in the alarm zone.
 
 Process workflow:
 
